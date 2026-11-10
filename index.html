@@ -292,6 +292,110 @@ footer a {
     border-radius: 12px;
     max-width: 100%;
         }
+      
+/* ===== PREMIUM 3D ANIMATIONS ===== */
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    overflow-x: hidden;
+    background: linear-gradient(135deg, #1b100c, #402319);
+}
+
+/* Premium hero animation */
+.hero {
+    position: relative;
+    overflow: hidden;
+    transform-style: preserve-3d;
+    animation: heroReveal 1.2s ease both;
+    box-shadow: 0 25px 60px rgba(0,0,0,.35);
+}
+
+.hero h1 {
+    animation: floatText 3s ease-in-out infinite;
+    text-shadow: 0 8px 20px rgba(0,0,0,.4);
+}
+
+@keyframes heroReveal {
+    from {
+        opacity: 0;
+        transform: translateY(35px) scale(.96);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+@keyframes floatText {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
+}
+
+/* 3D food cards */
+.food-card {
+    transform-style: preserve-3d;
+    transition: transform .45s ease, box-shadow .45s ease;
+    box-shadow: 0 12px 25px rgba(0,0,0,.25);
+    border-radius: 22px;
+}
+
+.food-card img {
+    transition: transform .5s ease;
+    border-radius: 16px;
+}
+
+@media (hover: hover) {
+    .food-card:hover {
+        transform: perspective(900px)
+                   rotateX(5deg)
+                   rotateY(-4deg)
+                   translateY(-12px);
+        box-shadow: 0 25px 45px rgba(0,0,0,.4);
+    }
+
+    .food-card:hover img {
+        transform: translateZ(25px) scale(1.05);
+    }
+}
+
+/* Premium buttons */
+.order-btn {
+    transition: transform .25s ease, box-shadow .25s ease;
+}
+
+.order-btn:hover {
+    transform: translateY(-4px) scale(1.04);
+    box-shadow: 0 10px 20px rgba(0,0,0,.25);
+}
+
+/* Section entrance */
+section {
+    animation: sectionReveal .8s ease both;
+}
+
+@keyframes sectionReveal {
+    from {
+        opacity: 0;
+        transform: translateY(25px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Respect reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation-duration: .01ms !important;
+        transition-duration: .01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
+      
   </style>
 
     <h1>Welcome to Urban Taste Cafe</h1>
